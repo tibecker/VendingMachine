@@ -20,6 +20,8 @@ namespace Capstone
         {
             // You may want to create some objects to get the whole process started here...
 
+            FileIO file = new FileIO();
+            file.LoadData();
 
             // Some objects could be passed into the menu constructor, so that the menu has something to 
             // perform its actions against....

@@ -15,7 +15,7 @@ namespace Capstone.CLI
             }
         }
 
-        public Beverage(string product, int quantity, double price, string slot): base(product, quantity, price, slot)
+        public Beverage(string product, decimal price, string slot): base(product, price, slot)
         {
 
         }
