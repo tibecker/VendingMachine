@@ -8,14 +8,16 @@ namespace Capstone.CLI
 {
     class FileIO
     {
-        public void LoadData()
+        public Dictionary<string, Food> LoadData()
         {
             //The file path where the data is stored
             string inputPath = @"../../../../vendingmachine.csv";
 
-            //Create a dictionary that will contain slotID and an instance of the class Food
-            Dictionary<string, Food> product = new Dictionary<string, Food>() { };
 
+            //Create dictionary
+            Dictionary<string, Food> dictOfProducts = new Dictionary<string, Food>() { };
+
+            //Read file line by line
             using (StreamReader reader = new StreamReader(inputPath))
             {
                 while (!reader.EndOfStream)
@@ -28,7 +30,7 @@ namespace Capstone.CLI
 
                     string tempString = tempArray[2];
 
-                    //Convert price from string into double
+                    //Convert price from string into decimal
                     decimal productPrice = Convert.ToDecimal(tempString);
 
 
@@ -37,27 +39,26 @@ namespace Capstone.CLI
                     if (tempArray[3] == "Chip")
                     {
                         Food food = new Chip(tempArray[1], productPrice, tempArray[0]);
-                        product.Add(tempArray[0], food);
+                        dictOfProducts.Add(tempArray[0], food);
                     }
                     else if (tempArray[3] == "Beverage")
                     {
                         Food food = new Beverage(tempArray[1], productPrice, tempArray[0]);
-                        product.Add(tempArray[0], food);
+                        dictOfProducts.Add(tempArray[0], food);
                     }
                     else if (tempArray[3] == "Candy")
                     {
                         Food food = new Candy(tempArray[1], productPrice, tempArray[0]);
-                        product.Add(tempArray[0], food);
+                        dictOfProducts.Add(tempArray[0], food);
                     }
                     else if (tempArray[3] == "Gum")
                     {
                         Food food = new Gum(tempArray[1], productPrice, tempArray[0]);
-                        product.Add(tempArray[0], food);
+                        dictOfProducts.Add(tempArray[0], food);
                     }
-
-
                 }
             }
+            return dictOfProducts;
         }
      }
 }

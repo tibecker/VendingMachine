@@ -1,5 +1,7 @@
-﻿using Capstone.CLI;
+﻿using Capstone.Classes;
+using Capstone.CLI;
 using System;
+using System.Collections.Generic;
 
 namespace Capstone
 {
@@ -21,11 +23,16 @@ namespace Capstone
             // You may want to create some objects to get the whole process started here...
 
             FileIO file = new FileIO();
-            file.LoadData();
+            Dictionary<string, Food> dictionaryOfProducts = file.LoadData();
+
+
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.DictOfProducts = dictionaryOfProducts;
+
 
             // Some objects could be passed into the menu constructor, so that the menu has something to 
             // perform its actions against....
-            MainMenu mainMenu = new MainMenu();
+            MainMenu mainMenu = new MainMenu(vendingMachine);
             mainMenu.Show();
         }
     }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Capstone.CLI
+namespace CapstoneTests
 {
-    class UserInterface
+    class FileIOTests
     {
     }
 }
