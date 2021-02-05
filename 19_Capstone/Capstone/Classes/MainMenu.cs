@@ -21,9 +21,9 @@ namespace Capstone.CLI
         {
             //In constructor add all of the options and the name of the method to execute
             // Add Sample menu options
-            AddOption("Greeting", Greeting, "G");
-            AddOption("Show the Time", GetTime, "T");
-            AddOption("Quit", Close, "Q");
+            AddOption("Display Vending Machine Items", DisplayItems, "(1)");
+            AddOption("Purchase", Purchase, "(2)");
+            AddOption("Quit", Close, "(3)");
 
             Configure(cfg =>
            {
@@ -34,16 +34,19 @@ namespace Capstone.CLI
            });
         }
 
-        private MenuOptionResult GetTime()
+        private MenuOptionResult Purchase()
         {
             Console.WriteLine($"The time is {DateTime.Now}");
             return MenuOptionResult.WaitAfterMenuSelection;
         }
 
-        private MenuOptionResult Greeting()
+
+        private MenuOptionResult DisplayItems()
         {
-            string name = GetString("What is your name? ");
-            Console.WriteLine($"Hello, {name}!");
+            foreach(KeyValuePair<string, Food> kvp in VendingMachine.DictOfProducts)
+            {
+                Console.WriteLine($"Item: {kvp.Value.Product}, Amount:{kvp.Value.Quantity}");
+            }
             return MenuOptionResult.WaitAfterMenuSelection;
         }
     }
