@@ -41,9 +41,9 @@ namespace Capstone.CLI
                         Food food = new Chip(tempArray[1], productPrice, tempArray[0]);
                         dictOfProducts.Add(tempArray[0], food);
                     }
-                    else if (tempArray[3] == "Beverage")
+                    else if (tempArray[3] == "Drink")
                     {
-                        Food food = new Beverage(tempArray[1], productPrice, tempArray[0]);
+                        Food food = new Drink(tempArray[1], productPrice, tempArray[0]);
                         dictOfProducts.Add(tempArray[0], food);
                     }
                     else if (tempArray[3] == "Candy")

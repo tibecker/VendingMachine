@@ -21,7 +21,7 @@ namespace CapstoneTests
 
 
             //Act
-            string actualValue = vendMachine.SelectProduct();
+            string actualValue = vendMachine.SelectProduct("A1");
 
             //Assert
             Assert.AreEqual(expectedValue, actualValue);

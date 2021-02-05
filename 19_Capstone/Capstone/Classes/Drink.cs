@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Capstone.CLI
 {
-    public class Beverage : Food
+    public class Drink : Food
     {
         override public string Message
         {
@@ -15,7 +15,7 @@ namespace Capstone.CLI
             }
         }
 
-        public Beverage(string product, decimal price, string slot): base(product, price, slot)
+        public Drink(string product, decimal price, string slot): base(product, price, slot)
         {
 
         }

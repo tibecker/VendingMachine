@@ -23,44 +23,60 @@ namespace Capstone.CLI
 
         }
 
-        public decimal FeedMoney(int input)
+        public decimal FeedMoney(int inputMoney)
         {
-            Balance += input;
+            Balance += inputMoney;
 
             return Balance;
         }
 
-        public string SelectProduct()
+        public string SelectProduct(string input)
         {
-            //check if products are available
-            foreach (KeyValuePair<string, Food> kvp in DictOfProducts)
-            {
-                // A1: Potato Crisps
-                // A2: Stackers
-                //Only display product if it is in stock
-                if (kvp.Value.Quantity >= 1)
-                {
-                    Console.WriteLine($"{kvp.Key}: {kvp.Value.Product}");
-                }
-            }
+            ////check if products are available
+            //foreach (KeyValuePair<string, Food> kvp in DictOfProducts)
+            //{
+            //    // A1: Potato Crisps
+            //    // A2: Stackers
+            //    //Only display product if it is in stock
+            //    if (kvp.Value.Quantity >= 1)
+            //    {
+            //        Console.WriteLine($"{kvp.Key}: {kvp.Value.Product}");
+            //    }
+            //}
 
-            //Ask user to enter a code for item
+            ////Ask user to enter a code for item
 
-            Console.Write("Please enter a 2-digit code: ");
-            string input = Console.ReadLine().ToUpper();
+      
 
             // if they have enough money for product
             // match input to Slot, which is the key in products
 
-            foreach (KeyValuePair<string, Food> kvp in DictOfProducts)
+            if (DictOfProducts.ContainsKey(input))
             {
-                if (kvp.Key == input && Balance >= kvp.Value.Quantity)
+                Food food = DictOfProducts[input];
+                if (Balance < food.Price)
                 {
-                    Balance -= kvp.Value.Quantity;
-                    return kvp.Value.Message;
+                    return "not enough money";
                 }
+                if (food.Quantity <= 0)
+                {
+                    return "SOLD OUT";
+                }
+                Balance -= food.Price;
+                food.Quantity--;
+                return food.Message;
             }
-            return "error";
+            return "Invalid key code";
+
+            //foreach (KeyValuePair<string, Food> kvp in DictOfProducts)
+            //{
+            //    if (kvp.Key == input && Balance >= kvp.Value.Quantity)
+            //    {
+            //        Balance -= kvp.Value.Price;
+            //        return kvp.Value.Message;
+            //    }
+            //}
+            //return "error";
         }
 
         public void FinishTransaction()
