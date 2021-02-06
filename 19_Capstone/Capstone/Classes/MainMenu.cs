@@ -24,13 +24,13 @@ namespace Capstone.CLI
             vendingMachine = aVendingMachine;
             //In constructor add all of the options and the name of the method to execute
             // Add Sample menu options
-            AddOption("Display Vending Machine Items", DisplayItems, "(1)");
-            AddOption("Purchase", Purchase, "(2)");
-            AddOption("Quit", Close, "(3)");
+            AddOption("Display Vending Machine Items", DisplayItems);
+            AddOption("Purchase", Purchase);
+            AddOption("Quit", Close);
 
             Configure(cfg =>
            {
-               cfg.ItemForegroundColor = ConsoleColor.Cyan;
+               cfg.ItemForegroundColor = ConsoleColor.White;
               // cfg.MenuSelectionMode = MenuSelectionMode.KeyString; // KeyString: User types a key, Arrow: User selects with arrow
                cfg.KeyStringTextSeparator = ": ";
                cfg.Title = "Main Menu";

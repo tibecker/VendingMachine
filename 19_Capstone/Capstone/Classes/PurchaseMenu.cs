@@ -55,7 +55,9 @@ namespace Capstone.Classes
 
         private MenuOptionResult FinishTransaction()
         {
-            throw new NotImplementedException();
+            string change = vendingMachine.FinishTransaction();
+            Console.WriteLine(change);
+            return MenuOptionResult.ExitAfterSelection;
         }
     }
 }
