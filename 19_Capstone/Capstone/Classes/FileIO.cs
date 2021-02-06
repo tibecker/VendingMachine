@@ -6,7 +6,7 @@ using Capstone.Classes;
 
 namespace Capstone.CLI
 {
-    class FileIO
+    public class FileIO
     {
         public Dictionary<string, Food> LoadData()
         {

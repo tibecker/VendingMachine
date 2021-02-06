@@ -8,7 +8,7 @@ namespace Capstone.CLI
 {
     public class VendingMachine
     {
-        public decimal Balance { get; set; } = 0;
+        public decimal Balance { get; set; } = 0M;
 
         //Create a dictionary that will contain slotID (key) and food (value)
         public Dictionary<string, Food> DictOfProducts { get; set; }
@@ -30,7 +30,6 @@ namespace Capstone.CLI
         public decimal FeedMoney(int inputMoney)
         {
             Balance += inputMoney;
-
             return Balance;
         }
 
@@ -41,7 +40,7 @@ namespace Capstone.CLI
                 Food food = DictOfProducts[input];
                 if (Balance < food.Price)
                 {
-                    return "not enough money";
+                    return "Not enough money";
                 }
                 if (food.Quantity <= 0)
                 {
@@ -49,8 +48,6 @@ namespace Capstone.CLI
                 }
                 Balance -= food.Price;
                 food.Quantity--;
-
-
                 return food.Message;
             }
             return "Invalid key code";
@@ -114,6 +111,5 @@ namespace Capstone.CLI
 
             }
         }
-
     }
 }

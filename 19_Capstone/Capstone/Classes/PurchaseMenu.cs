@@ -25,7 +25,7 @@ namespace Capstone.Classes
         private MenuOptionResult FeedMoney()
         {
             decimal initialBalance = vendingMachine.Balance;
-            int inputAmount = GetInteger("Enter amount in dollars",0, new int [] { 1,2,5,10});
+            int inputAmount = GetInteger("Enter amount in U.S. dollars",0, new int [] {1,2,5,10});
             decimal newBalance = vendingMachine.FeedMoney(inputAmount);
             Console.WriteLine($"Your new balance is {newBalance:c}.");
             vendingMachine.AuditLog("FEED MONEY:", initialBalance, newBalance) ;

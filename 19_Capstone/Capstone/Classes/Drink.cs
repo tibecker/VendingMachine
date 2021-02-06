@@ -11,7 +11,7 @@ namespace Capstone.CLI
         {
             get
             {
-                return "Glug, Glug, Yum!";
+                return "Glug Glug, Yum!";
             }
         }
 
