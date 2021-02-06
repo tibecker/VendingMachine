@@ -93,14 +93,27 @@ namespace Capstone.CLI
 
 
             //Generate Audit Log
-            public void AuditLog(string outPath)
+            // Date and time and action 
+            public void AuditLog(string action, decimal initialBalance, decimal finalBalance)
             {
+            
                 string newLine = "";
                 using (StreamWriter writer = new StreamWriter(outPath, true))
                 {
-                    writer.WriteLine(DateTime.Now);
+                    writer.WriteLine($"{DateTime.Now} {action} {initialBalance:c} {finalBalance:c}");
+                
                 }
             }
-       
+        public void AuditLog(string one, string two, decimal initialBalance, decimal finalBalance)
+        {
+
+            string newLine = "";
+            using (StreamWriter writer = new StreamWriter(outPath, true))
+            {
+                writer.WriteLine($"{DateTime.Now} {one} {two} {initialBalance:c} {finalBalance:c}");
+
+            }
+        }
+
     }
 }

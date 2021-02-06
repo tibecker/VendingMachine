@@ -24,9 +24,11 @@ namespace Capstone.Classes
 
         private MenuOptionResult FeedMoney()
         {
+            decimal initialBalance = vendingMachine.Balance;
             int inputAmount = GetInteger("Enter amount in dollars",0, new int [] { 1,2,5,10});
             decimal newBalance = vendingMachine.FeedMoney(inputAmount);
             Console.WriteLine($"Your new balance is {newBalance:c}.");
+            vendingMachine.AuditLog("FEED MONEY:", initialBalance, newBalance) ;
             return MenuOptionResult.WaitAfterMenuSelection;
         }
 
@@ -37,6 +39,7 @@ namespace Capstone.Classes
 
         private MenuOptionResult SelectProduct()
         {
+            decimal initialBalance = vendingMachine.Balance;
             foreach (KeyValuePair<string, Food> kvp in vendingMachine.DictOfProducts)
             {
                 // A1: Potato Crisps
@@ -48,15 +51,22 @@ namespace Capstone.Classes
                 }
             }
             string selectedProduct = GetString("Please select 2-digit code");
-            string messageOfProduct = vendingMachine.SelectProduct(selectedProduct);
+            string messageOfProduct = vendingMachine.SelectProduct(selectedProduct.ToUpper());
             Console.WriteLine(messageOfProduct);
+            Food food = vendingMachine.DictOfProducts[selectedProduct.ToUpper()];
+            string chosenFood = food.Product;
+            decimal newBalance = vendingMachine.Balance;
+            vendingMachine.AuditLog(chosenFood, selectedProduct.ToUpper(), initialBalance, newBalance);
             return MenuOptionResult.WaitAfterMenuSelection; //Wait for user to hit enter before re-displaying menu
         }
 
         private MenuOptionResult FinishTransaction()
         {
+            decimal initialBalance = vendingMachine.Balance;
             string change = vendingMachine.FinishTransaction();
+            decimal newBalance = vendingMachine.Balance;
             Console.WriteLine(change);
+            vendingMachine.AuditLog("GIVE CHANGE:", initialBalance, newBalance);
             return MenuOptionResult.ExitAfterSelection;
         }
     }
