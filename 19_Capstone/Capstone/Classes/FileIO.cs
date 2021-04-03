@@ -6,31 +6,35 @@ using Capstone.Classes;
 
 namespace Capstone.CLI
 {
+    // The purpose of this class is to import the values from a CSV and
+    // populate those values into a dictionary that contains all of the
+    // products inside of the vending machine.
+
     public class FileIO
     {
         public Dictionary<string, Food> LoadData(string inputPath)
         {
-            //Create dictionary
+            // Initialize dictionary of products to store all of the items in the vending machine.
             Dictionary<string, Food> dictOfProducts = new Dictionary<string, Food>() { };
 
-            //Read file line by line
+            // Use streamreader to read the CSV file line-by-line
             using (StreamReader reader = new StreamReader(inputPath))
             {
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
 
-                    //Create an array to temporarily store values
-                    string[] tempArray = line.Split("|");
+                    // Create an array to temporarily store values, using '|' to delimit values
                     // i.e. tempArray = ["A1","Potato Crisps", "3.05", "Chip"]
+                    string[] tempArray = line.Split("|");
+                   
+                    // Convert the price from a string to a decimal
+                    string priceAsString = tempArray[2];
+                    decimal productPrice = Convert.ToDecimal(priceAsString);
 
-                    string tempString = tempArray[2];
 
-                    //Convert price from string into decimal
-                    decimal productPrice = Convert.ToDecimal(tempString);
-
-
-                    //Create conditionals that will create a new instance of the product
+                    // Use Polymorphism to create different implementations of the class 'Food'
+                    // Add each item to the dictionary
 
                     if (tempArray[3] == "Chip")
                     {

@@ -8,31 +8,38 @@ namespace Capstone.CLI
 {
     public class VendingMachine
     {
+        // This is where the Audit Log will be stored
+        private const string outPath = @"../../../../Log.txt";
+        
         public decimal Balance { get; set; } = 0M;
 
-        //Create a dictionary that will contain slotID (key) and food (value)
         public Dictionary<string, Food> DictOfProducts { get; set; }
 
-        //Create a file to write result to
-        string outPath = @"../../../../Log.txt";
 
-        //Two constructors - the first constructor
-        public VendingMachine(decimal balance)
+        // Constructors
+        public VendingMachine(decimal balance, dictionary dictionaryOfProducts)
         {
             this.Balance = balance;
+            this.DictOfProducts = dictionaryOfProducts;
         }
 
-        public VendingMachine()
+        public VendingMachine(dictionary dictionaryOfProducts)
         {
-
+            this.DictOfProducts = dictionaryOfProducts;
         }
 
+
+
+        // ********** METHODS **********
+
+        // Method to handle feeding of money into vending machine
         public decimal FeedMoney(int inputMoney)
         {
             Balance += inputMoney;
             return Balance;
         }
 
+        // Method to handle the selection of a product
         public string SelectProduct(string input)
         {
             if (DictOfProducts.ContainsKey(input))
@@ -53,6 +60,7 @@ namespace Capstone.CLI
             return "Invalid key code";
         }
 
+        // Method to complete the transaction
         public string FinishTransaction()
         {
             //Initialize an int to store change

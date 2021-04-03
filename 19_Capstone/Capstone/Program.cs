@@ -20,18 +20,19 @@ namespace Capstone
          * *************************************************************************************/
         static void Main(string[] args)
         {
-            // You may want to create some objects to get the whole process started here...
+            // This is the path where the vending machine items are stored. 
             string inputPath = @"../../../../vendingmachine.csv";
+
+            // The input path is passed in to an instance of the FileIO class where a 
+            // dictionary of products is created.
             FileIO file = new FileIO(inputPath);
             Dictionary<string, Food> dictionaryOfProducts = file.LoadData();
 
+            // Create a new instance of the class 'Vending Machine'
+            // and pass in the inventory
+            VendingMachine vendingMachine = new VendingMachine(dictionaryOfProducts);
 
-            VendingMachine vendingMachine = new VendingMachine();
-            vendingMachine.DictOfProducts = dictionaryOfProducts;
-
-
-            // Some objects could be passed into the menu constructor, so that the menu has something to 
-            // perform its actions against....
+            // Create an instance of the Main
             MainMenu mainMenu = new MainMenu(vendingMachine);
             mainMenu.Show();
         }

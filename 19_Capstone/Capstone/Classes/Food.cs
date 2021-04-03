@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
+    // The abstract class'Food' will be extended to the Candy, Chip, Drink, and Food subclasses
     abstract public class Food
     {
         public string Product { get; }
