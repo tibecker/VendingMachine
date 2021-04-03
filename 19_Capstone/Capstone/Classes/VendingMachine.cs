@@ -9,7 +9,7 @@ namespace Capstone.CLI
     public class VendingMachine
     {
         // This is where the Audit Log will be stored
-        private const string outPath = @"../../../../Log.txt";
+        private const string outPath = @"19_Capstone/Log.txt";
         
         public decimal Balance { get; set; } = 0M;
 
