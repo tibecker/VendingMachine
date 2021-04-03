@@ -17,13 +17,13 @@ namespace Capstone.CLI
 
 
         // Constructors
-        public VendingMachine(decimal balance, dictionary dictionaryOfProducts)
+        public VendingMachine(decimal balance, Dictionary<string, Food> dictionaryOfProducts)
         {
             this.Balance = balance;
             this.DictOfProducts = dictionaryOfProducts;
         }
 
-        public VendingMachine(dictionary dictionaryOfProducts)
+        public VendingMachine(Dictionary<string, Food> dictionaryOfProducts)
         {
             this.DictOfProducts = dictionaryOfProducts;
         }
