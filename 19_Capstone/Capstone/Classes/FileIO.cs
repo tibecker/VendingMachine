@@ -8,12 +8,8 @@ namespace Capstone.CLI
 {
     public class FileIO
     {
-        public Dictionary<string, Food> LoadData()
+        public Dictionary<string, Food> LoadData(string inputPath)
         {
-            //The file path where the data is stored
-            string inputPath = @"../../../../vendingmachine.csv";
-
-
             //Create dictionary
             Dictionary<string, Food> dictOfProducts = new Dictionary<string, Food>() { };
 
