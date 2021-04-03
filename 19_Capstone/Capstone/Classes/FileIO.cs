@@ -12,13 +12,20 @@ namespace Capstone.CLI
 
     public class FileIO
     {
-        public Dictionary<string, Food> LoadData(string inputPath)
+        public string InputPath { get; set; }
+
+        public FileIO(string inputPath)
+        {
+            this.InputPath = inputPath;
+        }
+
+        public Dictionary<string, Food> LoadData()
         {
             // Initialize dictionary of products to store all of the items in the vending machine.
             Dictionary<string, Food> dictOfProducts = new Dictionary<string, Food>() { };
 
             // Use streamreader to read the CSV file line-by-line
-            using (StreamReader reader = new StreamReader(inputPath))
+            using (StreamReader reader = new StreamReader(this.InputPath))
             {
                 while (!reader.EndOfStream)
                 {
