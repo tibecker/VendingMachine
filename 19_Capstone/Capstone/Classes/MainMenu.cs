@@ -47,9 +47,14 @@ namespace Capstone.CLI
 
         private MenuOptionResult DisplayItems()
         {
+            console.WriteLine("PRODUCTS");
+            console.WriteLine();
             foreach(KeyValuePair<string, Food> kvp in vendingMachine.DictOfProducts)
             {
-                Console.WriteLine($"Item: {kvp.Value.Product}, Amount:{kvp.Value.Quantity}");
+                if (kvp.Value.Quantity > 0)
+                {
+                    Console.WriteLine($"{kvp.Value.Product}({kvp.Value.Price:c}) {kvp.Value.Quantity} left");
+                }
             }
             return MenuOptionResult.WaitAfterMenuSelection;
         }

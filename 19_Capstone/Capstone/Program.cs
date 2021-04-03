@@ -21,7 +21,7 @@ namespace Capstone
         static void Main(string[] args)
         {
             // This is the path where the vending machine items are stored. 
-            string inputPath = @"19_Capstone/vendingmachine.csv";
+            string inputPath = @"../../../../vendingmachine.csv";
 
             // The input path is passed in to an instance of the FileIO class where a 
             // dictionary of products is created.

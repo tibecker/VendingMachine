@@ -15,7 +15,7 @@ namespace CapstoneTests
         public void TestFileInput_LoadingData_ShouldReturn_CorrectPrice(string inputLine, double inputResult)
         {
             //Arrange - Create a new instance of FileIO class and a new vending machine
-            FileIO fileIO = new FileIO();
+            FileIO fileIO = new FileIO('the.txt');
             decimal expectedResult = Convert.ToDecimal(inputResult);
 
             //Act
@@ -32,7 +32,7 @@ namespace CapstoneTests
         public void TestFileInput_LoadingData_ShouldReturn_CorrectQuantity(string inputLine, int expectedResult)
         {
             //Arrange - Create a new instance of FileIO class and a new vending machine
-            FileIO fileIO = new FileIO();
+            FileIO fileIO = new FileIO('the.txt');
 
             //Act
             Dictionary<string, Food> dictOfFoods = fileIO.LoadData();

@@ -40,6 +40,7 @@ namespace Capstone.Classes
         private MenuOptionResult SelectProduct()
         {
             decimal initialBalance = vendingMachine.Balance;
+            console.WriteLine();
             foreach (KeyValuePair<string, Food> kvp in vendingMachine.DictOfProducts)
             {
                 // A1: Potato Crisps
@@ -47,9 +48,10 @@ namespace Capstone.Classes
                 //Only display product if it is in stock
                 if (kvp.Value.Quantity >= 1)
                 {
-                    Console.WriteLine($"{kvp.Key}: {kvp.Value.Product}");
+                    Console.WriteLine($" {kvp.Value.Product}({kvp.Value.Slot}): {kvp.Value.Price:c}");
                 }
             }
+            console.WriteLine();
             string selectedProduct = GetString("Please select 2-digit code");
             string messageOfProduct = vendingMachine.SelectProduct(selectedProduct.ToUpper());
             Console.WriteLine(messageOfProduct);
